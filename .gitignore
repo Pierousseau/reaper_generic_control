@@ -1,3 +1,4 @@
 *.VC.db
 *.vcxproj.user
 x64/*
+.suo
