@@ -1,0 +1,16 @@
+
+# `pkg-config --cflags --libs gtk+-2.0`
+CFLAGS = -DPNG_NO_MMX_CODE -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng12 
+
+LIBS = -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lfontconfig -lXext -lXrender -lXinerama -lXi -lXrandr -lXcursor -lXfixes -lpango-1.0 -lcairo -lX11 -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0
+
+CXXFLAGS = $(CFLAGS)
+CXX=g++
+
+SWELL_OBJS = swell-ini.o swell.o swell-wnd-gtk.o
+
+default: test-gtk
+
+test-gtk: test-gtk.o $(SWELL_OBJS)
+	$(CXX) -o test-gtk test-gtk.o $(SWELL_OBJS) $(CXXFLAGS) $(LIBS)
+	

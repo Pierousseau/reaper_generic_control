@@ -1,0 +1,136 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SURFACEEDIT_MCU DIALOG DISCARDABLE  0, 0, 268, 77
+STYLE DS_CENTER | WS_CHILD
+FONT 8, "MS Shell Dlg"
+BEGIN
+    RTEXT           "MIDI input:",IDC_STATIC,23,6,56,8
+    COMBOBOX        IDC_COMBO2,81,4,181,105,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    RTEXT           "MIDI output:",IDC_STATIC,23,23,56,8
+    COMBOBOX        IDC_COMBO3,81,21,181,105,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    RTEXT           "Surface offset (tracks):",IDC_EDIT1_LBL,4,42,72,8
+    EDITTEXT        IDC_EDIT1,81,41,24,12,ES_AUTOHSCROLL
+    RTEXT           "Size tweak:",IDC_EDIT2_LBL,30,58,47,8
+    EDITTEXT        IDC_EDIT2,80,55,24,12,ES_AUTOHSCROLL
+    LTEXT           "(leave at 9 unless you know what you're doing)",
+                    IDC_EDIT2_LBL2,108,58,148,8
+END
+
+IDD_SURFACEEDIT_MCU1 DIALOG DISCARDABLE  0, 0, 268, 95
+STYLE DS_CENTER | WS_CHILD
+FONT 8, "MS Shell Dlg"
+BEGIN
+    RTEXT           "MIDI input:",IDC_STATIC,23,6,56,8
+    COMBOBOX        IDC_COMBO2,81,4,181,105,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    RTEXT           "MIDI output:",IDC_STATIC,23,23,56,8
+    COMBOBOX        IDC_COMBO3,81,21,181,105,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    RTEXT           "Surface offset (tracks):",IDC_EDIT1_LBL,4,37,72,8
+    EDITTEXT        IDC_EDIT1,81,36,24,12,ES_AUTOHSCROLL
+    RTEXT           "Size tweak:",IDC_EDIT2_LBL,30,53,47,8
+    EDITTEXT        IDC_EDIT2,80,50,24,12,ES_AUTOHSCROLL
+    LTEXT           "(leave at 9 unless you know what you're doing)",
+                    IDC_EDIT2_LBL2,108,52,148,8
+    CONTROL         "Ignore fader moves when fader is not being touched",
+                    IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,4,67,
+                    177,10
+    CONTROL         "Map F1-F8 to go to markers",IDC_CHECK2,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,4,78,102,10
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SURFACEEDIT_MCU, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 264
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 73
+    END
+
+    IDD_SURFACEEDIT_MCU1, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 264
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 91
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
