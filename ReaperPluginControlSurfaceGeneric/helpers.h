@@ -1,3 +1,11 @@
+/*
+** Based on reaper_csurf
+** Copyright (C) 2006-2008 Cockos Incorporated
+** License: LGPL.
+**
+** MCU support - Modified for generic controller surfaces such as Korg NanoKontrol 2 support by : Pierre Rousseau (May 2017)
+*/
+
 #pragma once
 
 #include "control_surface_interface.h"

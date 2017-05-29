@@ -1,3 +1,9 @@
+/*
+** A generator for MIDI controller surface preset files, to be used in reaper_plugin_control_surface_generic Reaper plugin
+** Copyright (c) 2017 Pierre Rousseau
+** License: LGPL.
+*/
+
 
 #include <Windows.h>
 #include <mmsystem.h>
