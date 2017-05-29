@@ -37,5 +37,7 @@ If you make a different preset that you're happy with, please share it back :)
 I don't know ! But feel free to try, or to grab the code and modify it to adapt to your gear, and give feedback !
 
 # Licence
-This is covered by the MIT License.
-Use freely, as long as you acknowledge that should smoke come out of your control surface, or out of your hands after a great jam, I'm not responsible.
+This work is covered by the LGPL3 License.
+Third parties include the Reaper SDK, and Rapidjson library, which are covered by their own license sets.
+
+Within these licenses bonds, use freely, as long as you acknowledge that should smoke come out of your control surface, or out of your hands after a great jam, I'm not responsible.
