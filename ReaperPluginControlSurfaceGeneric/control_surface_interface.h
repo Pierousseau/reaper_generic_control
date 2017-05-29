@@ -8,9 +8,11 @@
 
 #pragma once
 
+#pragma warning (push, 0)
 #include <jmde/reaper_plugin.h>
 #include <WDL/db2val.h>
 #include <WDL/wdlstring.h>
+#pragma warning (pop)
 
 #include <stdio.h>
 #include "resource.h"

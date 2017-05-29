@@ -9,7 +9,9 @@
 
 #include "control_surface_interface.h"
 #include "helpers.h"
+#pragma warning (push, 0)
 #include <WDL/ptrlist.h>
+#pragma warning (pop)
 
 #include <filesystem>
 #include <functional>
@@ -25,6 +27,9 @@
 
 #include <rapidjson/document.h>
 #include <rapidjson/istreamwrapper.h>
+
+#pragma warning (disable:4996)
+
 
 class ControlSurfaceGeneric;
 
@@ -467,45 +472,45 @@ static WDL_DLGRET dlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
       int params[3];
       parseParameters((const char *)lParam, params);
 
-      int n = GetNumMIDIInputs();
-      int x = SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_ADDSTRING, 0, (LPARAM)"None");
-      SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_SETITEMDATA, x, -1);
-      for (x = 0; x < n; x++)
+      int count = GetNumMIDIInputs();
+      LRESULT entry_none = SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_ADDSTRING, 0, (LPARAM)"None");
+      SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_SETITEMDATA, entry_none, -1);
+      for (int i = 0; i < count; i++)
       {
         char buf[512];
-        if (GetMIDIInputName(x, buf, sizeof(buf)))
+        if (GetMIDIInputName(i, buf, sizeof(buf)))
         {
-          int a = SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_ADDSTRING, 0, (LPARAM)buf);
-          SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_SETITEMDATA, a, x);
-          if (x == params[0])
-            SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_SETCURSEL, a, 0);
+          LRESULT entry_midi = SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_ADDSTRING, 0, (LPARAM)buf);
+          SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_SETITEMDATA, entry_midi, i);
+          if (i == params[0])
+            SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_SETCURSEL, entry_midi, 0);
         }
       }
 
-      x = SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_ADDSTRING, 0, (LPARAM)"None");
-      SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_SETITEMDATA, x, -1);
-      n = GetNumMIDIOutputs();
-      for (x = 0; x < n; x++)
+      entry_none = SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_ADDSTRING, 0, (LPARAM)"None");
+      SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_SETITEMDATA, entry_none, -1);
+      count = GetNumMIDIOutputs();
+      for (int i = 0; i < count; i++)
       {
         char buf[512];
-        if (GetMIDIOutputName(x, buf, sizeof(buf)))
+        if (GetMIDIOutputName(i, buf, sizeof(buf)))
         {
-          int a = SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_ADDSTRING, 0, (LPARAM)buf);
-          SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_SETITEMDATA, a, x);
-          if (x == params[1])
-            SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_SETCURSEL, a, 0);
+          LRESULT entry_midi = SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_ADDSTRING, 0, (LPARAM)buf);
+          SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_SETITEMDATA, entry_midi, i);
+          if (i == params[1])
+            SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_SETCURSEL, entry_midi, 0);
         }
       }
 
-      x = SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_ADDSTRING, 0, (LPARAM)"None");
-      SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_SETITEMDATA, x, -1);
+      entry_none = SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_ADDSTRING, 0, (LPARAM)"None");
+      SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_SETITEMDATA, entry_none, -1);
       for (const auto & preset : surface_presets)
       {
-        int x = preset.first;
-        int a = SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_ADDSTRING, 0, (LPARAM)preset.second->name().c_str());
-        SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_SETITEMDATA, a, x);
-        if (x == params[2])
-          SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_SETCURSEL, a, 0);
+        int preset_key = preset.first;
+        LRESULT entry_preset = SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_ADDSTRING, 0, (LPARAM)preset.second->name().c_str());
+        SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_SETITEMDATA, entry_preset, preset_key);
+        if (preset_key == params[2])
+          SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_SETCURSEL, entry_preset, 0);
       }
     }
     break;
@@ -515,22 +520,22 @@ static WDL_DLGRET dlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
       if (wParam > 1 && lParam)
       {
         char tmp[512];
-
         int midi_in = -1, midi_out = -1, preset = -1;
-        int r = SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_GETCURSEL, 0, 0);
+
+        LRESULT r = SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_GETCURSEL, 0, 0);
         if (r != CB_ERR)
-          midi_in = SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_GETITEMDATA, r, 0);
+          midi_in = (int)SendDlgItemMessage(hwndDlg, IDC_COMBO2, CB_GETITEMDATA, r, 0);
 
         r = SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_GETCURSEL, 0, 0);
         if (r != CB_ERR)
-          midi_out = SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_GETITEMDATA, r, 0);
+          midi_out = (int)SendDlgItemMessage(hwndDlg, IDC_COMBO3, CB_GETITEMDATA, r, 0);
 
         r = SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_GETCURSEL, 0, 0);
         if (r != CB_ERR)
-          preset = SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_GETITEMDATA, r, 0);
+          preset = (int)SendDlgItemMessage(hwndDlg, IDC_COMBO4, CB_GETITEMDATA, r, 0);
 
         sprintf(tmp, "%d %d %d", midi_in, midi_out, preset);
-        lstrcpyn((char *)lParam, tmp, wParam);
+        lstrcpyn((char *)lParam, tmp, (int)wParam);
       }
     }
     break;
