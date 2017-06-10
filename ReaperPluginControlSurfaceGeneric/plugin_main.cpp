@@ -4,6 +4,10 @@
 ** License: LGPL.
 **
 ** MCU support - Modified for generic controller surfaces such as Korg NanoKontrol 2 support by : Pierre Rousseau (May 2017)
+** https://github.com/Pierousseau/reaper_generic_control
+**
+** Code in this file is basically identical to "ThirdParties\ReaperExtensionsSdk\jmde\csurf\csurf_main.cpp" in the reaper SDK,
+** except for the plugin registration part at the end of REAPER_PLUGIN_ENTRYPOINT function.
 */
 
 #include "control_surface_interface.h"

@@ -4,6 +4,7 @@
 ** License: LGPL.
 ** 
 ** MCU support - Modified for generic controller surfaces such as Korg NanoKontrol 2 support by : Pierre Rousseau (May 2017)
+** https://github.com/Pierousseau/reaper_generic_control
 */
 
 
@@ -31,8 +32,10 @@
 #pragma warning (disable:4996)
 
 
-class ControlSurfaceGeneric;
-
+/*
+A Surface Preset does the mapping from MIDI keycodes to actions in Reaper.
+Several named presets may be available in C:\Program Files\REAPER (x64)\Plugins\reaper_plugin_control_surface_generic_presets\
+*/
 class SurfacePreset
 {
 public:
@@ -235,6 +238,9 @@ private:
 };
 
 
+/*
+The List of SurfacePreset found in the preset folder.
+*/
 class SurfacePresets : public std::map<int, std::shared_ptr<SurfacePreset>>
 {
 public:
@@ -272,11 +278,19 @@ protected:
 };
 
 
-
+/*
+The static preset list will be populated on DLL load from all files in the preset folder.
+*/
 static SurfacePresets surface_presets;
 
 
 
+/*
+A control surface plugin needs to override IReaperControlSurface.
+This override is a lot simpler than usual, as it just forwards MIDI orders to the active preset, 
+without trying to understand them.
+All code below this point is mostly a heavily simplified version of the usual MCU plugin examples.
+*/
 class ControlSurfaceGeneric : public IReaperControlSurface
 {
 public:
@@ -312,6 +326,9 @@ public:
     return "GenericController";
   }
 
+  /*
+  The plugin description string, as seen in Reaper's preferences dialog
+  */
   const char *GetDescString()
   {
     _desc_string.Set("Generic Controller");
@@ -321,7 +338,10 @@ public:
     return _desc_string.Get();
   }
 
-  const char *GetConfigString() // string of configuration data
+  /*
+  The plugin configuration string, made of three numerals which are the ID of the input device, the ID of the output device, and the preset ID
+  */
+  const char *GetConfigString()
   {
     sprintf(_cfg_string, "%d %d %d", _midi_in_dev, _midi_out_dev, _preset);
     return _cfg_string;
@@ -350,12 +370,18 @@ public:
     }
   }
 
+  /*
+  If the track list changes, track indices probably changed so we need to make sure are controls affect the right tracks.
+  */
   virtual void SetTrackListChange() override
   {
     if (_active_preset)
       _active_preset->parseControls(_midi_out);
   }
 
+  /*
+  The following methods are actions done in Reaper UI, which we can maybe reflect on the surface (e.g. LED status)
+  */
   virtual void SetSurfaceVolume(MediaTrack *trackid, double volume) override
   {
     if (_midi_out && _active_preset)
@@ -437,6 +463,10 @@ private:
   char _cfg_string[1024];
 };
 
+
+/*
+Parse the plugin configuration string (input device ID, output device ID, preset ID)
+*/
 static void parseParameters(const char *str, int params[3])
 {
   params[0] = params[1] = params[2] = -1;
@@ -455,6 +485,10 @@ static void parseParameters(const char *str, int params[3])
   }
 }
 
+
+/*
+Instantiate the plugin
+*/
 static IReaperControlSurface *createFunc(const char *type_string, const char *configString, int *errStats)
 {
   int params[3];
@@ -469,6 +503,9 @@ static WDL_DLGRET dlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
   {
     case WM_INITDIALOG:
     {
+      /*
+      Add comboboxes to the plugin's configuration dialog
+      */
       int params[3];
       parseParameters((const char *)lParam, params);
 
@@ -517,6 +554,9 @@ static WDL_DLGRET dlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_USER + 1024:
     {
+      /*
+      Handle user input in the plugin's configuration dialog
+      */
       if (wParam > 1 && lParam)
       {
         char tmp[512];
@@ -548,6 +588,11 @@ static HWND configFunc(const char *type_string, HWND parent, const char *initCon
   return CreateDialogParam(g_hInst, MAKEINTRESOURCE(IDD_SURFACEEDIT_MCU), parent, dlgProc, (LPARAM)initConfigString);
 }
 
+/*
+Global variable, of type struct reaper_csurf_reg_t, containing the plugin's name, creation and configuration functions.
+Used in plugin_main.cpp : REAPER_PLUGIN_ENTRYPOINT : 
+    rec->Register("csurf", &generic_surface_control_reg);
+*/
 reaper_csurf_reg_t generic_surface_control_reg =
 {
   "GenericController",

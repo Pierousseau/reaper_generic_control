@@ -1,7 +1,10 @@
 /*
 ** A generator for MIDI controller surface preset files, to be used in reaper_plugin_control_surface_generic Reaper plugin
 ** Copyright (c) 2017 Pierre Rousseau
+** https://github.com/Pierousseau/reaper_generic_control
 ** License: LGPL.
+**
+** Code in the present file uses RapidJson, but does not use the Reaper SDK in any way.
 */
 
 
