@@ -13,6 +13,7 @@ I may very well have missed an easy and efficient way to make it work, but it wa
 I looked at reaper's SDK, and discovered it was poorly documented and most existing control surface plugins shipped with it had button codes hardcoded all over the place, which is... well, not my favorite kind of code.
 So I decided to try to write my plugin without hardcoding MIDI codes.
 To do that, I made the plugin to use a simple json (text) list of the MIDI codes used by the control surface. This package is actually two-fold ; on one side, there is the plugin DLL and its folder of json MIDI codes presets, and on the other side is a super-basic console program that will assist you in generating a json preset.
+This code is compiled for 32 and 64 bit windows. Mac users, feel free to contribute !
 
 # Does it work ?
 All buttons work, except for "Track previous" / "Track next" (what should I use them for ?). Reaper will send feedback and appropriately turn on/off the lights on your surface. The right-most controls are bound to the master.
@@ -21,7 +22,7 @@ All buttons work, except for "Track previous" / "Track next" (what should I use 
 1. Modify your surface's behaviour, in **Korg Kontrol Editor**. We want the *Cycle*, *Play*, *Record*, and all the tracks' *S*, *M*, and *R* to be used as toggles. We also allow the leds control by our plugin (set *LED Mode* to *External*). You can do it yourself, or simply open the file I made which is available in the **Dist** folder. Dont forget to do *Communications* -> *Write Scene Data* to apply your changes !
 ![Korg Kontrol Editor](https://github.com/Pierousseau/reaper_generic_control/raw/master/Doc/kontrol_editor.png)
 
-2. Copy the content of **Dist/Plugins/** to **C:\Program Files\REAPER (x64)\Plugins** (or wherever your Reaper plugins are installed).
+2. Copy the content of **Dist/x64/Plugins/** to **C:\Program Files\REAPER (x64)\Plugins** (or wherever your Reaper plugins are installed). If you use a 32 bits version of reaper, use the 32 bits plugin.
 
 3. Launch Reaper. Open its preferences (Ctrl+P), browse down to *Control/OSC/Web*. Click *Add*, select *Generic Surface Controller*. Set your control surface as MIDI input and output. Select the json preset you want from the last list. Click OK.
 ![Reaper Preferences](https://github.com/Pierousseau/reaper_generic_control/raw/master/Doc/reaper.png)
