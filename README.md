@@ -1,5 +1,5 @@
 # Reaper Generic Control
-A plugin for [Reaper DAW](http://www.reaper.fm/), to use the [KORG Nanokontrol2](http://www.korg.com/us/products/computergear/nanokontrol2/) MIDI control surface, and could probably support similar surfaces as well.
+A plugin for [Reaper DAW](http://www.reaper.fm/), to use the [KORG nanoKONTROL](https://www.korg.com/us/support/download/product/1/252/) or [KORG Nanokontrol2](http://www.korg.com/us/products/computergear/nanokontrol2/) MIDI control surface, and could probably support similar surfaces as well.
 
 # Why ?
 So, I bought a MIDI control surface, KORG's Nanokontrol2.
@@ -8,6 +8,7 @@ I thought it would be somehow plug and play with my favorite Digital Audio Works
 I found a few tutorials to make it work, but nothing worked as well as I hoped. 
 So I made my own plugin, to have my control surface work just the way I want.
 I may very well have missed an easy and efficient way to make it work, but it was rather instructive anyway.
+
 
 # What is it ?
 I looked at reaper's SDK, and discovered it was poorly documented and most existing control surface plugins shipped with it had button codes hardcoded all over the place, which is... well, not my favorite kind of code.
