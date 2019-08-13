@@ -1,0 +1,181 @@
+{
+    "SurfaceName": "nanokontrol",
+    "Transport": {
+        "Cycle": 49,
+        "Forward": 48,
+        "Play": 45,
+        "Record": 44,
+        "Rewind": 47,
+        "Stop": 46
+    },
+    "Master": {
+        "Mute": 126,
+        "Pan": 10,
+        "Solo": 125,
+        "Volume": 7
+    },
+    "Tracks": [
+        {
+            "Mute": 33,
+            "Pan": 14,
+            "Solo": 23,
+            "Volume": 2
+        },
+        {
+            "Mute": 34,
+            "Pan": 15,
+            "Solo": 24,
+            "Volume": 3
+        },
+        {
+            "Mute": 35,
+            "Pan": 16,
+            "Solo": 25,
+            "Volume": 4
+        },
+        {
+            "Mute": 36,
+            "Pan": 17,
+            "Solo": 26,
+            "Volume": 5
+        },
+        {
+            "Mute": 37,
+            "Pan": 18,
+            "Solo": 27,
+            "Volume": 6
+        },
+        {
+            "Mute": 38,
+            "Pan": 19,
+            "Solo": 28,
+            "Volume": 8
+        },
+        {
+            "Mute": 39,
+            "Pan": 20,
+            "Solo": 29,
+            "Volume": 9
+        },
+        {
+            "Mute": 40,
+            "Pan": 21,
+            "Solo": 30,
+            "Volume": 12
+        },
+        {
+            "Mute": 41,
+            "Pan": 22,
+            "Solo": 31,
+            "Volume": 13
+        },
+        {
+            "Mute": 76,
+            "Pan": 57,
+            "Solo": 67,
+            "Volume": 42
+        },
+        {
+            "Mute": 77,
+            "Pan": 58,
+            "Solo": 68,
+            "Volume": 43
+        },
+        {
+            "Mute": 78,
+            "Pan": 59,
+            "Solo": 69,
+            "Volume": 50
+        },
+        {
+            "Mute": 79,
+            "Pan": 60,
+            "Solo": 70,
+            "Volume": 51
+        },
+        {
+            "Mute": 80,
+            "Pan": 61,
+            "Solo": 71,
+            "Volume": 52
+        },
+        {
+            "Mute": 81,
+            "Pan": 62,
+            "Solo": 72,
+            "Volume": 53
+        },
+        {
+            "Mute": 82,
+            "Pan": 63,
+            "Solo": 73,
+            "Volume": 54
+        },
+        {
+            "Mute": 83,
+            "Pan": 65,
+            "Solo": 74,
+            "Volume": 55
+        },
+        {
+            "Mute": 84,
+            "Pan": 66,
+            "Solo": 75,
+            "Volume": 56
+        },
+        {
+            "Mute": 116,
+            "Pan": 94,
+            "Solo": 107,
+            "Volume": 85
+        },
+        {
+            "Mute": 117,
+            "Pan": 95,
+            "Solo": 108,
+            "Volume": 86
+        },
+        {
+            "Mute": 118,
+            "Pan": 96,
+            "Solo": 109,
+            "Volume": 87
+        },
+        {
+            "Mute": 119,
+            "Pan": 97,
+            "Solo": 110,
+            "Volume": 88
+        },
+        {
+            "Mute": 120,
+            "Pan": 102,
+            "Solo": 111,
+            "Volume": 89
+        },
+        {
+            "Mute": 121,
+            "Pan": 103,
+            "Solo": 112,
+            "Volume": 90
+        },
+        {
+            "Mute": 122,
+            "Pan": 104,
+            "Solo": 113,
+            "Volume": 91
+        },
+        {
+            "Mute": 123,
+            "Pan": 105,
+            "Solo": 114,
+            "Volume": 92
+        },
+        {
+            "Mute": 124,
+            "Pan": 106,
+            "Solo": 115,
+            "Volume": 93
+        }
+    ]
+}
