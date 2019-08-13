@@ -34,6 +34,41 @@ All buttons work, except for "Track previous" / "Track next" (what should I use 
 Maybe my default preset won't be to your taste. For instance, I reserved the right-most track controls for the master, which may not be what you like. Or, you may usually work half of the time in Cubase or Sonar, and the other half in Reaper, and you don't want to reconfigure your surface all the time. Well, that's what presets are for. Use *Dist/PluginPresetGenerator/control_surface_map_generator.exe* to generate another preset suited to your needs, put the file in *C:\Program Files\REAPER (x64)\Plugins\reaper_plugin_control_surface_generic_presets*, select it in reaper preferences, and go back to playing music !
 If you make a different preset that you're happy with, please share it back :)
 
+# What about the original nanoKONTROL ?
+This is what the original nanoKONTROL looks like.
+
+![Nanokontrol](https://github.com/nhand42/reaper_generic_control/raw/master/Doc/nanokontrol.png)
+
+Unlike the (much better) KORG nanoKONTROL2 the original KORG nanoKONTROL lacked the
+marker set/cycle buttons and also has only two buttons per track which are not
+labelled. I've mapped the two buttons to SOLO and MUTE in each track. The per-track
+RECORD buttons on the nanonKONTROL2 are nice but SOLO and MUTE are more useful.
+
+One quirk of the original nanoKONTROL is the SCENE button. This cycles through four
+scenes 1, 2, 3 & 4. There are 9 physical sliders/pots so you can control 27 different
+tracks.
+
+But wait, surely four times nine equals 36 tracks? In another quirk the fourth scene
+has all 9 physical controls mapped to a single track. So this is by defacto the master
+track. In summary:
+
+  * Scene 1 -> tracks 1 through 9
+  * Scene 2 -> tracks 10 through 18
+  * Scene 3 -> tracks 19 through 27
+  * Scene 4 -> master track
+
+The transport buttons (PLAY/STOP/REC/RWD/FWD/LOOP) are the same for each scene. But in
+yet another quirk, when you're using KORG Kontrol Editor to change the PLAY/REC/LOOP
+buttons from "momentary" to "toggle" you need to do it four times; once per scene. You
+also need to set "toggle" for each SOLO/MUTE button separately in each scene.
+
+The file Korg_NanoKontrol_ReaperMap.nktrl_data has a pre-built configuration for KORG
+Kontrol Editor. Load it with File -> Load Scene Data File then write it to your
+nanoKONTROL with Communication -> Write Scene Set. Then all the buttons will be setup
+correctly and you're ready to go. Follow Pierousseau's instructions to install the
+plugin (.dll) and presets (.json) into your Reaper\Plugins directory and then select
+"Generic Surface Controller" and the "nanokontrol" preset within Reaper.
+
 # Could it work with my *whatever* control surface ?
 I don't know ! But feel free to try, or to grab the code and modify it to adapt to your gear, and give feedback !
 
